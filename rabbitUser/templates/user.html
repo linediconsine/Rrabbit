@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="/">Refresh</a>
+<section class="keys">
+ {% for message in messages %}
+ <div>
+    <pre>{{ message }}</pre>
+ </div>
+  {% endfor %}
+</section>
+
+</body>
+</html>
