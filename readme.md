@@ -1,4 +1,4 @@
-# Random Rabbit was here...
+# Random Rabbit using the stack Python - Flask - React
 
 Randomic Rabbit is a web service that generates random numbers at random time intervals, and sends them to the connected user in real time.
 
@@ -51,4 +51,4 @@ Also know as __"Opsy, I finished the time"__
 
 2. Makefile ( and easy start stop whould be great)
 
-3.gitignore ... ... 
+3. gitignore ... ... 
