@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-import pika, random, time
+import pika, random, time, logging
+
 
 def send(key):
 	connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
@@ -9,8 +10,8 @@ def send(key):
 	connection.close()
 
 
-def genrate_json_token(key_lenght = 5):
-	new_key = int(random.random() * (10 * 5))
+def create_token(key_lenght = 5):
+	new_key = int(random.random() * pow(10,key_lenght))
 	#timestamp = f"{int(time.time())}-ts--{int(random.random() * (10))}-r"
 	#token = {
 	#		'timestamp': timestamp,
@@ -21,12 +22,14 @@ def genrate_json_token(key_lenght = 5):
 token_generated = 0
 
 if __name__ == "__main__":
+	logging.info("[RandomRabbit] starting server")
 	while True:
 		token_generated = token_generated +1
-		new_token = genrate_json_token()
+		new_token = create_token()
 		waiting_time = int(random.random() * 10)
 		send(str(new_token))
-		print(f" [{token_generated}] - RandomRabbit will wait {waiting_time} sec and the update the code" , end='\r')
+		#print(f" [{token_generated}] - RandomRabbit will wait {waiting_time} sec and the update the code" , end='\r')
+		logging.info(f" [{token_generated}] - RandomRabbit will wait {waiting_time} sec and the update the code", end='\r')
 		time.sleep(waiting_time)
 
 

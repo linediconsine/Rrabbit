@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 import threading
-from flask import Flask, render_template
+from flask import Flask, render_template,jsonify,json
 import pika
-
 
 
 app = Flask(__name__)
@@ -14,6 +13,7 @@ channel.queue_declare(queue='randomic_rabbit_queue')
 
 memory = []
 
+
 def random_rabbit_receiver():
 	def callback(ch, method, properties, body):
 		memory.append(str(body))
@@ -21,9 +21,17 @@ def random_rabbit_receiver():
 	print(' [*] Waiting for messages. To exit press CTRL+C')
 	channel.start_consuming()
 
+# HTML
 @app.route('/')
 def view():
 	return render_template('./user.html', messages=memory)
+
+# JSON
+@app.route('/json')
+def json():
+	response = jsonify(keys=memory)
+	response.headers.add('Access-Control-Allow-Origin', '*')
+	return response
 
 
 if __name__ == '__main__':
