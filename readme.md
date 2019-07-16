@@ -20,6 +20,8 @@ After this, the missing part is create a web interface that dynamically show the
 ## Requirements
 1. Install RabbitMQ and run RabbitMQ server
 2. Python3
+3. For install all python libraries needed please use:
+$ pip install -r requirements.txt
 
 ## How to run
 
