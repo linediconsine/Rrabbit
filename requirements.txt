@@ -1,6 +1,6 @@
 # I made a mistake of dont create a new env when I started this project. I recover the follow dipendences but something could miss, SORRY!
 Flask==1.0.2
-Flask-Cors==3.0.7
+Flask-Cors==3.0.9
 Flask-JWT-Simple==0.0.3
 Markdown==3.0.1
 pika==1.0.1
